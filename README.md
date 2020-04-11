@@ -1,4 +1,4 @@
-# Boilerplate for express
+# Boilerplate for express 😎
 
 This project use the best practice to create a powerful server
 

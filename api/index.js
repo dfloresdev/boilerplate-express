@@ -5,6 +5,7 @@ const swaggerUI = require("swagger-ui-express");
 
 const config = require("../config");
 const employee = require("./components/employee/network");
+const auth = require("./components/auth/network");
 
 const app = express();
 app.use(bodyParser.json());
@@ -12,6 +13,7 @@ const swaggerDoc = require("./swagger.json");
 
 // ROUTER
 app.use("/api/employee", employee);
+app.use("/api/auth", auth);
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 
