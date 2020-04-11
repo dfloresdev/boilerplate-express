@@ -1,0 +1,202 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Boilerplate node server with express and basic structure",
+    "version": "1.0.0",
+    "title": "Boilerplate Node with express",
+    "contact": {
+      "email": "hello@dflores.dev"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/v2",
+  "tags": [
+    {
+      "name": "Followme: dfloresdev",
+      "externalDocs": {
+        "description": "Web site",
+        "url": "https://dflores.dev"
+      }
+    }
+  ],
+  "schemes": ["http"],
+  "paths": {
+    "/api/employee": {
+      "post": {
+        "tags": ["employee"],
+        "summary": "Create employee",
+        "description": "You can create a employee in dummy database",
+        "operationId": "createEmployee",
+        "produces": ["application/xml", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Employee created",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "employee created"
+          }
+        }
+      },
+      "get": {
+        "tags": ["employee"],
+        "summary": "Get all employees",
+        "description": "Return all employees",
+        "operationId": "getEmployee",
+        "produces": ["application/xml", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Get all employees",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetEmployees"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "employee created"
+          }
+        }
+      }
+    },
+    "/api/employee/{id}": {
+      "get": {
+        "tags": ["employee"],
+        "summary": "Get a specific employee",
+        "description": "Return one employee",
+        "operationId": "getOneEmployee",
+        "produces": ["application/xml", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Get one employee",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetOneEmployee"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "employee created"
+          }
+        }
+      },
+      "put": {
+        "tags": ["employee"],
+        "summary": "Get a specific employee",
+        "description": "Feauture in progress",
+        "operationId": "updateOneEmployee",
+        "produces": ["application/xml", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Update one employee",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateOneEmployee"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "employee updated"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Employee": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        }
+      }
+    },
+    "GetEmployees": {
+      "type": "array",
+      "items": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GetOneEmployee": {
+      "type": "array",
+      "items": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "UpdateOneEmployee": {
+      "type": "array",
+      "items": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
