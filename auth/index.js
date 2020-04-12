@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const config = require("../config");
+const error = require("../utils/error");
 
 const secret = config.jwt.secret;
 
@@ -13,7 +14,7 @@ const check = {
     console.log("decoded", decoded);
 
     if (decoded.id !== owner) {
-      throw new Error("You don't have access to this element");
+      throw error("You don't have access to this element", 401);
     }
   },
 };
@@ -24,11 +25,11 @@ function verify(token) {
 
 function getToken(auth) {
   if (!auth) {
-    throw new Error("Without token");
+    throw error("Without token", 406);
   }
 
   if (auth.indexOf("Bearer") === -1) {
-    throw new Error("Invalid Format");
+    throw error("Invalid Format", 406);
   }
 
   let token = auth.replace("Bearer ", "");
