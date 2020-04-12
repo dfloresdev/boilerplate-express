@@ -1,7 +1,7 @@
 const express = require("express");
-const router = express.Router();
 const response = require("../../../network/response");
 const Controller = require("./index");
+const router = express.Router();
 
 router.post("/login", login);
 

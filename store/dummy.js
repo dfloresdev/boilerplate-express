@@ -25,15 +25,12 @@ async function get(tabla, id) {
 }
 
 async function upsert(tabla, data) {
-  let user = await get(tabla, data.id);
-  if (user) {
-    // insert function update
-  } else {
-    if (!db[tabla]) {
-      db[tabla] = [];
-    }
-    db[tabla].push(data);
+  if (!db[tabla]) {
+    db[tabla] = [];
   }
+
+  db[tabla].push(data);
+
   console.log(db);
   return data;
 }
