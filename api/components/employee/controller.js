@@ -1,5 +1,6 @@
 const { nanoid } = require("nanoid");
 const auth = require("../auth");
+var ObjectId = require("mongodb").ObjectID;
 
 const TABLA = "employee";
 
@@ -32,7 +33,7 @@ module.exports = (injectedStore) => {
     if (body.id) {
       employee.id = body.id;
     } else {
-      employee.id = nanoid();
+      employee.id = new ObjectId();
     }
 
     if (body.password || body.username) {
@@ -46,9 +47,14 @@ module.exports = (injectedStore) => {
     return store.upsert(TABLA, employee);
   }
 
+  function remove(id) {
+    return store.remove(TABLA, id);
+  }
+
   return {
     list,
     get,
     upsert,
+    remove,
   };
 };

@@ -12,7 +12,7 @@ const check = {
   own: (req, owner) => {
     const decoded = decodeHeader(req);
     console.log("decoded", decoded);
-    if (decoded.id !== owner) {
+    if (decoded._doc._id !== owner) {
       throw error("You don't have access to this element", 401);
     }
   },

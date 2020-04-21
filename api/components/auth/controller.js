@@ -13,10 +13,10 @@ module.exports = (injectedStore) => {
   async function login(username, password) {
     const data = await store.query(TABLA, { username: username });
 
-    return bcrypt.compare(password, data.password).then((areEquals) => {
+    return bcrypt.compare(password, data[0].password).then((areEquals) => {
       if (areEquals === true) {
         // generar token
-        return auth.sign({ ...data });
+        return auth.sign({ ...data[0] });
       } else {
         throw error("Invalid information", 400);
       }

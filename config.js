@@ -14,4 +14,8 @@ module.exports = {
     password: process.env.MYSQL_PASS,
     database: process.env.MYSQL_DATABASE,
   },
+  mongodb: {
+    user: process.env.MONGO_USER,
+    pass: process.env.MONGO_PASS,
+  },
 };
