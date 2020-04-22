@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+const cors = require("cors");
+
 const swaggerUI = require("swagger-ui-express");
 
 const config = require("../config");
@@ -9,6 +11,9 @@ const auth = require("./components/auth/network");
 const errors = require("../network/errors");
 
 const app = express();
+
+app.use(cors());
+
 app.use(bodyParser.json());
 const swaggerDoc = require("./swagger.json");
 
